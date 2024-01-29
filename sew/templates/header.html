@@ -1,0 +1,10 @@
+{% load header %}
+
+<header>
+    {% get_menu_items as menu %}
+    <ul>
+        {% for item in menu %}
+            <li><a href="{{ item.href }}">{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+</header>
