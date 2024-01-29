@@ -27,3 +27,4 @@ Thumbs.db
 
 .coverage
 db.sqlite3
+.prettierignore
