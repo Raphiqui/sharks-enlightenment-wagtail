@@ -30,6 +30,7 @@
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
+
     {% include "header.html" %}
 
     <body class="{% block body_class %}{% endblock %}">
@@ -44,4 +45,6 @@
         {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
+
+    {% include "footer.html" %}
 </html>
