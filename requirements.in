@@ -2,3 +2,7 @@ Django
 wagtail
 coverage
 pytest-django
+pytest-cov
+djangorestframework
+markdown
+django-filter
