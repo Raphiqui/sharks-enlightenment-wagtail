@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Shark
+
+from home.models import SharkPage
 
 
 class SharkPreviewSerializer(serializers.ModelSerializer):
@@ -20,7 +21,7 @@ class SharkPreviewSerializer(serializers.ModelSerializer):
         )
 
     class Meta:
-        model = Shark
+        model = SharkPage
         fields = ["title", "scientific_name", "thumbnail"]
 
 
@@ -31,7 +32,7 @@ class SharkSerializer(serializers.ModelSerializer):
     """
 
     class Meta:
-        model = Shark
+        model = SharkPage
         fields = [
             "title",
             "scientific_name",
