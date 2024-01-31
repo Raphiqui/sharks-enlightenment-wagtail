@@ -34,6 +34,7 @@ class SharkSerializer(serializers.ModelSerializer):
     class Meta:
         model = SharkPage
         fields = [
+            "id",
             "title",
             "scientific_name",
             "description",
