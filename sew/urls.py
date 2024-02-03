@@ -7,15 +7,18 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
-from sew.views import SharkViewSet
+from sew.views import SharksViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r"sharks", SharksViewSet, basename="Sharks")
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
-    path("api/sharks", SharkViewSet.as_view(), name="sharks"),
-    path("api/sharks/<int:pk>", SharkViewSet.as_view(), name="shark"),
+    path("api/", include(router.urls)),
 ]
 
 
