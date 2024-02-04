@@ -27,7 +27,7 @@ class SharkPreviewSerializer(serializers.ModelSerializer):
 
 class SharkSerializer(serializers.ModelSerializer):
     """
-    Gloabl serializer for Shark model.
+    Global serializer for Shark model.
     Almost all the data are interesting, basically aims to be displayed into shark page.
     """
 
