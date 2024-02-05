@@ -2,9 +2,16 @@
 
 <header>
     {% get_menu_items as menu %}
-    <ul>
-        {% for item in menu %}
-            <li><a href="{{ item.href }}">{{ item }}</a></li>
-        {% endfor %}
-    </ul>
+    <label class="hamburger-menu">
+        <input type="checkbox" />
+    </label>
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                {% for item in menu %}
+                    <li><a href="{{ item.href }}">{{ item }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </aside>
 </header>
