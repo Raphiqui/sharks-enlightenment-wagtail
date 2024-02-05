@@ -1,0 +1,10 @@
+@import "settings/colors.css";
+@import "header.css";
+
+body {
+  background-color: var(--color-blue);
+
+  a {
+    text-decoration: none;
+  }
+}
