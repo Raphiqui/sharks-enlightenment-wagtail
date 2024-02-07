@@ -7,3 +7,5 @@ djangorestframework
 markdown
 django-filter
 codespell
+django-compressor 
+django-libsass

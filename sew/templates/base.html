@@ -1,4 +1,5 @@
 {% load static wagtailcore_tags wagtailuserbar %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +25,9 @@
         {% endif %}
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/sew.css' %}">
+        {% compress css %}
+            <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}" />
+        {% endcompress %}
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
