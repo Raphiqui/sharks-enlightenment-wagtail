@@ -2,8 +2,28 @@
 @import "abstracts/_mixins.scss";
 @import "header.scss";
 
+:root {
+  // General
+  --top-gap-height: 62px;
+
+  // Derived values
+  --main-min-height: calc(100vh - var(--top-gap-height));
+}
+
+@include small-screens {
+  :root {
+    --top-gap-height: 0px;
+  }
+}
+
 body {
   background-color: var(--color-blue);
+  margin: 0;
+
+  main {
+    padding-top: var(--top-gap-height);
+    height: var(--main-min-height);
+  }
 
   a {
     text-decoration: none;
