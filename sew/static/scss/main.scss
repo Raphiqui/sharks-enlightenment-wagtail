@@ -1,0 +1,11 @@
+@import "settings/colors.scss";
+@import "abstracts/_mixins.scss";
+@import "header.scss";
+
+body {
+  background-color: var(--color-blue);
+
+  a {
+    text-decoration: none;
+  }
+}
