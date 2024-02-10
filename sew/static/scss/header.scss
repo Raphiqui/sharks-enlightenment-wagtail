@@ -1,0 +1,166 @@
+:root {
+  --bar-width: 40px;
+  --bar-height: 4px;
+  --hamburger-gap: 6px;
+  --foreground: var(--color-black);
+  --background: var(--color-transparent);
+  --hamburger-margin: 8px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+  --backdrop-filter: blur(12px);
+  --ul-flex-direction: row;
+}
+
+@include small-screens {
+  :root {
+    --backdrop-filter: blur(12px);
+    --ul-flex-direction: column;
+  }
+}
+
+header {
+  background-color: var(--background);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+  backdrop-filter: var(--backdrop-filter);
+  z-index: 99;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  color: var(--color-white);
+  left: 0;
+
+  a {
+    font-weight: 500;
+    color: var(--color-white);
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin: 0;
+    flex-direction: var(--ul-flex-direction);
+
+    li {
+      list-style: none;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-block;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 1px;
+        display: block;
+        background: var(--color-white);
+        transition: 0.3s;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .hamburger {
+    &-menu {
+      display: flex;
+
+      @include small-screens {
+        --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--hamburger-gap);
+        width: max-content;
+        position: absolute;
+        top: var(--hamburger-margin);
+        right: 0;
+        z-index: 2;
+        cursor: pointer;
+
+        &:has(input:checked) {
+          --foreground: var(--color-white);
+          --background: var(--color-black);
+        }
+
+        &:has(input:focus-visible)::before,
+        &:has(input:focus-visible)::after,
+        & input:focus-visible {
+          border: 1px solid var(--background);
+          box-shadow: 0 0 0 1px var(--foreground);
+        }
+
+        &:has(input:checked)::before {
+          rotate: 45deg;
+          width: var(--x-width);
+          translate: 0 calc(var(--bar-height) / -2);
+        }
+
+        &:has(input:checked)::after {
+          rotate: -45deg;
+          width: var(--x-width);
+          translate: 0 calc(var(--bar-height) / 2);
+        }
+      }
+
+      & input {
+        appearance: none;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        pointer-events: none;
+
+        &:checked {
+          opacity: 0;
+          width: 0;
+
+          & + .sidebar {
+            translate: 0;
+          }
+        }
+      }
+
+      &::before,
+      &::after,
+      & input {
+        content: "";
+        width: var(--bar-width);
+        height: var(--bar-height);
+        background-color: var(--foreground);
+        border-radius: 9999px;
+        transform-origin: left center;
+        transition: opacity var(--animation-timing),
+          width var(--animation-timing), rotate var(--animation-timing),
+          translate var(--animation-timing),
+          background-color var(--animation-timing);
+      }
+    }
+  }
+
+  .sidebar {
+    max-width: 1140px;
+    margin: 0 auto;
+
+    @include small-screens {
+      transition: translate var(--animation-timing);
+      translate: -100%;
+      padding: 0.5rem 1rem;
+      padding-top: calc(
+        var(--hamburger-height) + var(--hamburger-margin) + 1rem
+      );
+      background-color: var(--foreground);
+      color: var(--background);
+      max-width: 10rem;
+      min-height: 100vh;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+    }
+  }
+}
