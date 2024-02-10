@@ -1,20 +1,31 @@
 :root {
+  // General
   --bar-width: 40px;
   --bar-height: 4px;
   --hamburger-gap: 6px;
-  --foreground: #333;
-  --background: var(--color-transparent);
   --hamburger-margin: 8px;
   --animation-timing: 200ms ease-in-out;
+
+  // Colors
+  --foreground: var(--color-black);
+  --background: var(--color-transparent);
+
+  // Derived values
   --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
   --backdrop-filter: blur(12px);
   --ul-flex-direction: row;
+  --sidebar-max-width: 1140px;
+  --sidebar-padding: unset;
 }
 
+// Media queries
 @include small-screens {
   :root {
+    // Derived values
     --backdrop-filter: blur(12px);
     --ul-flex-direction: column;
+    --sidebar-max-width: 10rem;
+    --sidebar-padding: 0.5rem 1rem;
   }
 }
 
@@ -143,19 +154,20 @@ header {
   }
 
   .sidebar {
-    max-width: 1140px;
+    max-width: var(--sidebar-max-width);
     margin: 0 auto;
+    padding: var(--sidebar-padding);
 
     @include small-screens {
       transition: translate var(--animation-timing);
       translate: -100%;
-      padding: 0.5rem 1rem;
+      padding: var(--sidebar-padding);
       padding-top: calc(
         var(--hamburger-height) + var(--hamburger-margin) + 1rem
       );
       background-color: var(--foreground);
       color: var(--background);
-      max-width: 10rem;
+      max-width: var(--sidebar-max-width);
       min-height: 100vh;
       position: absolute;
       z-index: 1;
