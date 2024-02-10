@@ -2,7 +2,7 @@
   --bar-width: 40px;
   --bar-height: 4px;
   --hamburger-gap: 6px;
-  --foreground: var(--color-black);
+  --foreground: #333;
   --background: var(--color-transparent);
   --hamburger-margin: 8px;
   --animation-timing: 200ms ease-in-out;
@@ -86,6 +86,10 @@ header {
         &:has(input:checked) {
           --foreground: var(--color-white);
           --background: var(--color-black);
+
+          & + .sidebar {
+            translate: 0;
+          }
         }
 
         &:has(input:focus-visible)::before,
@@ -93,6 +97,21 @@ header {
         & input:focus-visible {
           border: 1px solid var(--background);
           box-shadow: 0 0 0 1px var(--foreground);
+        }
+
+        &::before,
+        &::after,
+        & input {
+          content: "";
+          width: var(--bar-width);
+          height: var(--bar-height);
+          background-color: var(--foreground);
+          border-radius: 9999px;
+          transform-origin: left center;
+          transition: opacity var(--animation-timing),
+            width var(--animation-timing), rotate var(--animation-timing),
+            translate var(--animation-timing),
+            background-color var(--animation-timing);
         }
 
         &:has(input:checked)::before {
@@ -118,26 +137,7 @@ header {
         &:checked {
           opacity: 0;
           width: 0;
-
-          & + .sidebar {
-            translate: 0;
-          }
         }
-      }
-
-      &::before,
-      &::after,
-      & input {
-        content: "";
-        width: var(--bar-width);
-        height: var(--bar-height);
-        background-color: var(--foreground);
-        border-radius: 9999px;
-        transform-origin: left center;
-        transition: opacity var(--animation-timing),
-          width var(--animation-timing), rotate var(--animation-timing),
-          translate var(--animation-timing),
-          background-color var(--animation-timing);
       }
     }
   }
