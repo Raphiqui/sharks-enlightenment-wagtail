@@ -1,4 +1,5 @@
 @import "settings/colors.scss";
+@import "settings/fonts.scss";
 @import "abstracts/_mixins.scss";
 @import "header.scss";
 
@@ -19,6 +20,7 @@
 body {
   background-color: var(--color-blue);
   margin: 0;
+  font-family: "Sixtyfour", sans-serif;
 
   main {
     padding-top: var(--top-gap-height);
