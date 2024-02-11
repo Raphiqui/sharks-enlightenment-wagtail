@@ -2,5 +2,17 @@
 {% load wagtailimages_tags %}
 
 {% block content %}
-<div>This is a shark page => {{self.title}}</div>
+<div class="sp-outer">
+    <div class="sp-inner">
+        <div class="sp-content title">
+            <h2>{{self.title}}</h2>
+            <h3>{{self.scientific_name}}</h3>
+        </div>
+        <div class="sp-content image"></div>
+        <div class="sp-content size"></div>
+        <div class="sp-content iucn"></div>
+        <div class="sp-content description"></div>
+        <div class="sp-content distribution"></div>    
+    </div>
+</div>
 {% endblock content %}
