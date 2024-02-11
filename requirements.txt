@@ -10,10 +10,14 @@ asgiref==3.7.2
     # via django
 beautifulsoup4==4.11.2
     # via wagtail
+black==24.1.1
+    # via -r requirements.in
 certifi==2023.11.17
     # via requests
 charset-normalizer==3.3.2
     # via requests
+click==8.1.7
+    # via black
 codespell==2.2.6
     # via -r requirements.in
 coverage[toml]==7.4.1
@@ -77,16 +81,24 @@ libsass==0.23.0
     # via django-libsass
 markdown==3.5.2
     # via -r requirements.in
+mypy-extensions==1.0.0
+    # via black
 openpyxl==3.1.2
     # via wagtail
 packaging==23.2
-    # via pytest
+    # via
+    #   black
+    #   pytest
+pathspec==0.12.1
+    # via black
 pillow==10.2.0
     # via
     #   pillow-heif
     #   wagtail
 pillow-heif==0.14.0
     # via willow
+platformdirs==4.2.0
+    # via black
 pluggy==1.4.0
     # via pytest
 pytest==8.0.0
@@ -120,10 +132,13 @@ telepath==0.3.1
     # via wagtail
 tomli==2.0.1
     # via
+    #   black
     #   coverage
     #   pytest
 typing-extensions==4.9.0
-    # via asgiref
+    # via
+    #   asgiref
+    #   black
 urllib3==2.1.0
     # via requests
 wagtail==5.2.3
