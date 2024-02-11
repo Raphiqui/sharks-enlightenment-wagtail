@@ -2,6 +2,7 @@
 @import "settings/fonts.scss";
 @import "abstracts/_mixins.scss";
 @import "header.scss";
+@import "shark.scss";
 
 :root {
   // General
@@ -19,12 +20,13 @@
 
 body {
   background-color: var(--color-blue);
-  margin: 0;
   font-family: "Sixtyfour", sans-serif;
+  max-width: 1140px;
+  margin: 0 auto;
 
   main {
     padding-top: var(--top-gap-height);
-    height: var(--main-min-height);
+    min-height: var(--main-min-height);
   }
 
   a {
