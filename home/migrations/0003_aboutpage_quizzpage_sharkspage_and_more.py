@@ -7,59 +7,127 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0002_create_homepage'),
-        ('wagtailcore', '0089_log_entry_data_json_null_to_object'),
-        ('wagtailimages', '0025_alter_image_file_alter_rendition_file'),
+        ("home", "0002_create_homepage"),
+        ("wagtailcore", "0089_log_entry_data_json_null_to_object"),
+        ("wagtailimages", "0025_alter_image_file_alter_rendition_file"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AboutPage',
+            name="AboutPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'About page',
+                "verbose_name": "About page",
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='QuizzPage',
+            name="QuizzPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Quizz page',
+                "verbose_name": "Quizz page",
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='SharksPage',
+            name="SharksPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Sharks page',
+                "verbose_name": "Sharks page",
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.AlterModelOptions(
-            name='homepage',
-            options={'verbose_name': 'Home page'},
+            name="homepage",
+            options={"verbose_name": "Home page"},
         ),
         migrations.CreateModel(
-            name='SharkPage',
+            name="SharkPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
-                ('scientific_name', models.CharField(max_length=250, verbose_name='Scientific name')),
-                ('description', models.TextField(verbose_name='Description')),
-                ('iucn_status', models.CharField(choices=[('LC', 'Least Concern'), ('NT', 'Near Threatened'), ('VU', 'Vulnerable'), ('EN', 'Endangered'), ('CR', 'Critically Endangered'), ('EW', 'Extinct in the Wild'), ('EX', 'Extinct')], default='LC', max_length=100, verbose_name='IUCN status')),
-                ('distribution', models.TextField(verbose_name='Distribution')),
-                ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailimages.image', verbose_name='Image')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
+                (
+                    "scientific_name",
+                    models.CharField(max_length=250, verbose_name="Scientific name"),
+                ),
+                ("description", models.TextField(verbose_name="Description")),
+                (
+                    "iucn_status",
+                    models.CharField(
+                        choices=[
+                            ("LC", "Least Concern"),
+                            ("NT", "Near Threatened"),
+                            ("VU", "Vulnerable"),
+                            ("EN", "Endangered"),
+                            ("CR", "Critically Endangered"),
+                            ("EW", "Extinct in the Wild"),
+                            ("EX", "Extinct"),
+                        ],
+                        default="LC",
+                        max_length=100,
+                        verbose_name="IUCN status",
+                    ),
+                ),
+                ("distribution", models.TextField(verbose_name="Distribution")),
+                (
+                    "image",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="wagtailimages.image",
+                        verbose_name="Image",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Shark page',
+                "verbose_name": "Shark page",
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
     ]
