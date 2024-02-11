@@ -1,0 +1,44 @@
+.sp {
+  &-inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--color-grid);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: var(--color-white);
+    display: grid;
+    grid-gap: 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  &-content {
+    border: 2px solid var(--color-white);
+    border-radius: 25px;
+    overflow: hidden;
+
+    color: var(--color-white);
+
+    &.image {
+      // img object without altering aspect ratio
+      picture {
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        & img {
+          object-fit: cover;
+          height: 500px;
+          width: 100%;
+        }
+      }
+    }
+
+    & > .text-align-center {
+      text-align: center;
+    }
+  }
+}
