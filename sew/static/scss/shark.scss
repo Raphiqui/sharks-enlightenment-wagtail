@@ -8,11 +8,11 @@
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     color: var(--color-white);
-    display: grid;
     grid-gap: 20px;
     box-sizing: border-box;
     border-radius: 12px;
     overflow: hidden;
+    flex-direction: column;
   }
 
   &-content {
@@ -21,6 +21,27 @@
     overflow: hidden;
 
     color: var(--color-white);
+
+    &-inner {
+      grid-gap: 20px;
+      display: flex;
+
+      &-left {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 20px;
+        width: 60%;
+
+        &-upper {
+          display: flex;
+          grid-gap: 20px;
+        }
+      }
+
+      &-right {
+        width: 40%;
+      }
+    }
 
     &.image {
       // img object without altering aspect ratio

@@ -11,22 +11,30 @@
         <div class="sp-content image">
             {% picture self.image original %}
         </div>
-        <div class="sp-content size">
-            <h4 class="text-align-center">Size</h4>
-            <p class="text-align-center">{{self.size}}</p>
+        <div class="sp-content-inner">
+            <div class="sp-content-inner-left">
+                <div class="sp-content-inner-left-upper">
+                    <div class="sp-content size">
+                        <h4 class="text-align-center">Size</h4>
+                        <p class="text-align-center">{{self.size}}</p>
+                    </div>
+                    <div class="sp-content iucn">
+                        <h4 class="text-align-center">IUCN Status</h4>
+                        <p>{{self.iucn_status}}</p>
+                    </div>
+                </div>
+                <div class="sp-content description">
+                    <h4 class="text-align-center">Description</h4>
+                    <p>{{self.description}}</p>
+                </div>
+            </div>
+            <div class="sp-content-inner-right">
+                <div class="sp-content distribution">
+                    <h4 class="text-align-center">Distribution</h4>
+                    <p>{{self.distribution}}</p>
+                </div>   
+            </div> 
         </div>
-        <div class="sp-content iucn">
-            <h4 class="text-align-center">IUCN Status</h4>
-            <p>{{self.iucn_status}}</p>
-        </div>
-        <div class="sp-content description">
-            <h4 class="text-align-center">Description</h4>
-            <p>{{self.description}}</p>
-        </div>
-        <div class="sp-content distribution">
-            <h4 class="text-align-center">Distribution</h4>
-            <p>{{self.distribution}}</p>
-        </div>    
     </div>
 </div>
 {% endblock content %}
