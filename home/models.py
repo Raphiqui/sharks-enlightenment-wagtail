@@ -55,20 +55,8 @@ class SharksPage(Page):
         """
 
         shark_pages = SharkPage.objects.live().descendant_of(self)
-        preview_data = [
-            model_to_dict(
-                shark_page, fields=["id", "title", "scientific_name", "image"]
-            )
-            for shark_page in shark_pages
-        ]
-
-        serializer = SharkPreviewSerializer(data=preview_data, many=True)
-
-        if serializer.is_valid():
-            return serializer.data
-        else:
-            print(serializer.errors)
-            return []
+        serializer = SharkPreviewSerializer(instance=shark_pages, many=True)
+        return serializer.data
 
     def get_context(self, request):
         """
