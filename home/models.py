@@ -1,8 +1,11 @@
 from django.db import models
+from django.forms import model_to_dict
 
 from wagtail.models import Page, Orderable
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
+
+from home.serializers import SharkPreviewSerializer
 
 
 IUCN_STATUS = [
@@ -45,6 +48,26 @@ class SharksPage(Page):
     parent_page_types = ["home.HomePage"]
 
     subpage_types = ["home.SharkPage"]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        shark_pages = SharkPage.objects.live().descendant_of(self)
+        preview_data = [
+            model_to_dict(
+                shark_page, fields=["id", "title", "scientific_name", "image"]
+            )
+            for shark_page in shark_pages
+        ]
+
+        serializer = SharkPreviewSerializer(data=preview_data, many=True)
+
+        if serializer.is_valid():
+            context["sharks"] = serializer.data
+        else:
+            print(serializer.errors)
+            context["sharks"] = []
+
+        return context
 
     class Meta:
         verbose_name = "Sharks page"
