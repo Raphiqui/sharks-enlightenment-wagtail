@@ -49,8 +49,11 @@ class SharksPage(Page):
 
     subpage_types = ["home.SharkPage"]
 
-    def get_context(self, request):
-        context = super().get_context(request)
+    def _get_sharks_preview_data(self) -> list:
+        """
+        Get all the necessary data relative to shark previews
+        """
+
         shark_pages = SharkPage.objects.live().descendant_of(self)
         preview_data = [
             model_to_dict(
@@ -62,11 +65,18 @@ class SharksPage(Page):
         serializer = SharkPreviewSerializer(data=preview_data, many=True)
 
         if serializer.is_valid():
-            context["sharks"] = serializer.data
+            return serializer.data
         else:
             print(serializer.errors)
-            context["sharks"] = []
+            return []
 
+    def get_context(self, request):
+        """
+        Fill up all the data relative to context to be used in the template
+        """
+
+        context = super().get_context(request)
+        context["sharks"] = self._get_sharks_preview_data()
         return context
 
     class Meta:
