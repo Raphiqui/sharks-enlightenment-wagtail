@@ -36,6 +36,7 @@ django==5.0.1
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
+    #   model-bakery
     #   wagtail
 django-appconf==1.0.6
     # via django-compressor
@@ -80,6 +81,8 @@ l18n==2021.3
 libsass==0.23.0
     # via django-libsass
 markdown==3.5.2
+    # via -r requirements.in
+model-bakery==1.17.0
     # via -r requirements.in
 mypy-extensions==1.0.0
     # via black

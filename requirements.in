@@ -10,3 +10,4 @@ codespell
 django-compressor 
 django-libsass
 black
+model-bakery
