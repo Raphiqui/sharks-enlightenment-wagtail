@@ -106,6 +106,7 @@ pluggy==1.4.0
     # via pytest
 pytest==8.0.0
     # via
+    #   -r requirements.in
     #   pytest-cov
     #   pytest-django
 pytest-cov==4.1.0
