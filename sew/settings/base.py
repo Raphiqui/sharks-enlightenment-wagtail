@@ -142,7 +142,15 @@ STATICFILES_DIRS = [
 # ManifestStaticFilesStorage is recommended in production, to prevent outdated
 # JavaScript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
 # See https://docs.djangoproject.com/en/4.2/ref/contrib/staticfiles/#manifeststaticfilesstorage
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+    },
+}
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
@@ -174,3 +182,6 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+
+# Fix warning ""Django60Warning: The default scheme will be changed from 'http' to 'https' in Django 6.0. Pass the forms.URLField.assume_scheme argument to silence this warning, or set the FORMS_URLFIELD_ASSUME_HTTPS transitional setting to True to opt into using 'https' as the new default scheme.
+FORMS_URLFIELD_ASSUME_HTTPS = True
