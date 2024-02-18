@@ -65,9 +65,6 @@ class TestSerializer(WagtailPageTestCase):
         assert serializer.data["thumbnail"] == ""
 
     def test_serializer_is_empty(self):
-        """
-        There is nothing into the instance so throw an error when accessing data
-        """
         serializer = SharkPreviewSerializer()
         assert serializer.data == {"id": None, "scientific_name": "", "title": ""}
 
