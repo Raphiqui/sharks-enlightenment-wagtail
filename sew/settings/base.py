@@ -182,3 +182,5 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+
+SECRET_KEY = os.getenv("SECRET_KEY")
