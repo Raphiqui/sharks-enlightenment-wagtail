@@ -6,6 +6,8 @@ from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 
 from home.serializers import SharkPreviewSerializer
+from wagtail.fields import StreamField
+from wagtail.blocks import CharBlock, RichTextBlock
 
 
 IUCN_STATUS = [
@@ -32,6 +34,20 @@ class HomePage(Page):
 
 class AboutPage(Page):
     parrent_page_types = ["home.HomePage"]
+
+    body = StreamField(
+        [
+            ("heading", CharBlock(form_classname="title")),
+            ("paragraph", RichTextBlock()),
+        ],
+        use_json_field=True,
+        blank=True,
+        null=True,
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("body"),
+    ]
 
     class Meta:
         verbose_name = "About page"
