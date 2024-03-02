@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.utils.functional import cached_property
 
 
 class SharkPreviewSerializer(serializers.Serializer):
@@ -20,5 +21,12 @@ class SharkPreviewSerializer(serializers.Serializer):
         if not obj.image:
             return ""
 
-        rendition = obj.image.get_rendition("max-1000x500")
+        renditions = obj.image.renditions.filter(filter_spec="max-1000x500")
+        if renditions.exists():
+            # If it does, use the existing rendition
+            rendition = renditions.first()
+        else:
+            # If it doesn't, create a new rendition
+            rendition = obj.image.get_rendition("max-1000x500")
+
         return rendition.url
