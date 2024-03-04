@@ -34,6 +34,10 @@
         height: var(--thumbnail-height);
         word-wrap: break-word;
         list-style: none;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 45px;
+        position: relative;
 
         img {
           max-width: var(--thumbnail-width);
@@ -41,6 +45,25 @@
           height: var(--thumbnail-height);
           object-fit: cover;
         }
+      }
+    }
+
+    &-absolute {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      color: var(--color-white);
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
