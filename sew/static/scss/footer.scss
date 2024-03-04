@@ -1,0 +1,11 @@
+footer {
+  text-align: center;
+  padding: 10px;
+  .footer {
+    &-content {
+      img {
+        height: 18px;
+      }
+    }
+  }
+}
