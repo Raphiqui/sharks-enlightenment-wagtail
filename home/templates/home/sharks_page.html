@@ -11,12 +11,14 @@
             <ul class="sps-content-list">
                 {% for shark in sharks %}
                     <li class="sps-content-list-item">
-                        {% picture self.thumbnail original %}
-                        <img src="{{shark.thumbnail}}" alt="{{shark.title}}">
-                        <div class="sps-content-absolute">
-                            <span>{{shark.title}}</span>
-                            <span>See more</span>
-                        </div>
+                        <a href="{{shark.slug}}">
+                            {% picture self.thumbnail original %}
+                            <img src="{{shark.thumbnail}}" alt="{{shark.title}}">
+                            <div class="sps-content-absolute">
+                                <span>{{shark.title}}</span>
+                                <span>See more</span>
+                            </div>
+                        </a>
                     </li>
                 {% endfor %}
             </ul>
