@@ -56,7 +56,6 @@ class TestSerializer(WagtailPageTestCase):
         serializer = SharkPreviewSerializer(instance=shark_page)
         self.assertIn("id", serializer.data)
         self.assertIn("title", serializer.data)
-        self.assertIn("scientific_name", serializer.data)
         self.assertIn("thumbnail", serializer.data)
 
     def test_serializer_thumbnail_may_be_empty(self):
@@ -66,9 +65,7 @@ class TestSerializer(WagtailPageTestCase):
 
     def test_serializer_is_empty(self):
         serializer = SharkPreviewSerializer()
-        self.assertEqual(
-            serializer.data, {"id": None, "scientific_name": "", "title": ""}
-        )
+        self.assertEqual(serializer.data, {"id": None, "title": ""})
 
     def test_serializer_many_is_truthy(self):
         shark_pages = SharkPage.objects.all()

@@ -9,7 +9,6 @@ class SharkPreviewSerializer(serializers.Serializer):
 
     id = serializers.IntegerField()
     title = serializers.CharField()
-    scientific_name = serializers.CharField()
     thumbnail = serializers.SerializerMethodField()
 
     def get_thumbnail(self, obj):
